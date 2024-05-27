@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "@next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
+const Lucida = localFont({
+  src: [
+    {
+      path: "./fonts/lucida.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/lucidabold.ttf",
+      weight: "700",
+      style: "bold",
+    },
+  ],
+});
 export const metadata: Metadata = {
   title: "Moksh",
   description: "Moksh Shah's personal website",
@@ -16,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${Lucida.className}`}>{children}</body>
     </html>
   );
 }
