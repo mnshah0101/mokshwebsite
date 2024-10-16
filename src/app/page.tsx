@@ -18,6 +18,8 @@ export default function Home() {
             <a href="#experiences">experiences</a>
             <span className="px-2 md:px-3">|</span>
             <a href="#projects">projects</a>
+            <span className="px-2 md:px-3">|</span>
+            <a href="#projects">blog</a>
           </p>
         </div>
       </div>
@@ -31,12 +33,12 @@ export default function Home() {
           <div className="about-item">
             <p>
               hello! i am moksh shah, a student at georgia tech studying
-              computer science with a focus on system architecture and computer
-              intelligence. i am deeply interested in making cool software
-              products and working with great people. i'm a full stack engineer
-              at heart and i love working on building beautiful uis with clean,
-              efficient backends. my go-to tech stack consists of react and go,
-              but i am always open to learning new technologies.
+              computer science with a focus on system architecture and
+              artificial intelligence. i am deeply interested in making cool
+              software products and working with great people. i'm a full stack
+              engineer at heart and i love working on building beautiful uis
+              with clean, efficient backends. my go-to tech stack consists of
+              react and go, but i am always open to learning new technologies.
             </p>
           </div>
 
@@ -44,9 +46,8 @@ export default function Home() {
             <p>
               right now, i am working on a few projects in the realm of sports
               technology that i'm very excited about, both as a developer and
-              equity holder. concurrently, i spend my nights working on a legal
-              ai start-up that aims to make e-discovery and document review cost
-              effective, especially for small practices.
+              equity holder. in my own time, im building in cpp and studying
+              data structures and algos. super interested in finance and the world of quant finance.
             </p>
           </div>
         </div>
@@ -58,9 +59,27 @@ export default function Home() {
             <h1 className="text-xl md:text-2xl">experiences</h1>
           </div>
           <div className="experiences-item mt-4">
+            <div className="experiences-item mt-4">
+              <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+                <h2>software engineer intern @ meaglabs.xyz</h2>
+                <p>jan 2024 - present</p>
+              </div>
+              <p>
+                i was hired as a software engineering intern at megalabs, an ai
+                venture firm. i was responsible for creating the application
+                layer for an ai sports data analyst. the magic is a custom
+                text-to-sql engine which takes user questions and automatically
+                generates sql queries, which we intelligently debug on the fly.
+                i was also responsible for creating the product's rest apis and
+                utilized web socket connections for response streaming. we also
+                utilized the t3 stack for frontend/backend communication. we are
+                in the midst of expanding and fundraising.
+              </p>
+            </div>
+
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>software engineer and founder @ avalon</h2>
-              <p>feb 2024 - present</p>
+              <p>feb 2024 - jun 2024</p>
             </div>
             <p>
               since february 2024, i've been working as an engineer and
@@ -74,33 +93,17 @@ export default function Home() {
               aws s3, ensuring efficient downstream feeding into our rag model.
               moreover, i've optimized our language models with langchain to
               assess the probability of case wins, aggregating metrics from
-              various documents to enhance decision-making processes.
-            </p>
-          </div>
-
-          <div className="experiences-item mt-4">
-            <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
-              <h2>machine learning engineer @ meaglabs.xyz</h2>
-              <p>jan 2024 - present</p>
-            </div>
-            <p>
-              i was hired as a machine learning engineer at megalabs, an ai
-              venture firm. i, along with four other engineers, created a react
-              app using the t3 stack (typescript, trpc, tailwindcss) for a
-              sports data conversational assistant. i also built an intelligent
-              sql agent with aws bedrock, aws athena, langchain, gpt 4.0, and
-              aws open search that could generate and run complex sql queries on
-              its own to answer user questions in python. on top of that, i put
-              together a mongodb-backed interface to keep tabs on thousands of
-              user queries and check how accurate our models were during alpha
-              testing.
+              various documents to enhance decision-making processes. as a team,
+              we sucessfully pitched to various venture capitalists and had a
+              couple law firms using our product. we decided put the pause on
+              this until we graduate.
             </p>
           </div>
 
           <div className="experiences-item mt-4">
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>lead engineer @ opsmpro</h2>
-              <p>may 2021 - present</p>
+              <p>may 2021 - sept 2024</p>
             </div>
             <p>
               since june 2023, i’ve been the go-to person for all things tech at
@@ -121,6 +124,43 @@ export default function Home() {
           <div className="projects-title lucida-bold py-3 md:py-5">
             <h1 className="text-xl md:text-2xl">projects</h1>
           </div>
+
+          <div className="projects-item mt-4">
+            <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>github.com/mnshah0101/futuresalphamomentumbacktest</h2>
+            </div>
+
+            <p>
+                backtested alpha momentum model which took historical alphas and predicted price direction using a neural network
+                recreated idea from peer reviewed research paper. implemented in python.
+            </p>
+          </div>
+
+          <div className="projects-item mt-4">
+            <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>github.com/mnshah0101/VectorVisualizationCpp</h2>
+            </div>
+
+            <p>
+              c++ project that helps visualize vector operations in 3-d space
+              with opengui
+            </p>
+          </div>
+
+          <div className="projects-item mt-4">
+            <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>github.com/mnshah0101/zetamactracker</h2>
+            </div>
+
+            <p>
+              chrome extension that helps track zetamac scores (mental math
+              game). developed in js. can download here:{" "}
+              <a href="https://chromewebstore.google.com/detail/zetamac-score-tracker/dklbimmbofmkbcblgpelfdajbjeppajo">
+                <b>get now</b>
+              </a>
+            </p>
+          </div>
+
           <div className="projects-item mt-4">
             <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>counsia.com</h2>
@@ -145,18 +185,6 @@ export default function Home() {
               a powerful ai-powered api generator and serverless hosting
               provider that fully automates generating apis from mongo schemas.
               created using the mern stack.
-            </p>
-          </div>
-
-          <div className="projects-item mt-4">
-            <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
-              <h2>theroleplayer.co</h2>
-            </div>
-
-            <p>
-              a sports blog that discusses interesting statistical phenomena in
-              sports. built using the mern stack and modeling and graphing done
-              in python using sklearn, matplotlib, pandas, and pytorch.
             </p>
           </div>
         </div>
