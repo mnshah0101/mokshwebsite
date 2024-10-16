@@ -19,7 +19,7 @@ export default function Home() {
             <span className="px-2 md:px-3">|</span>
             <a href="#projects">projects</a>
             <span className="px-2 md:px-3">|</span>
-            <a href="#projects">blog</a>
+            <a href="https://medium.com/@mnshah0101">blog</a>
           </p>
         </div>
       </div>
@@ -47,7 +47,8 @@ export default function Home() {
               right now, i am working on a few projects in the realm of sports
               technology that i'm very excited about, both as a developer and
               equity holder. in my own time, im building in cpp and studying
-              data structures and algos. super interested in finance and the world of quant finance.
+              data structures and algos. super interested in finance and the
+              world of quant finance.
             </p>
           </div>
         </div>
@@ -131,8 +132,9 @@ export default function Home() {
             </div>
 
             <p>
-                backtested alpha momentum model which took historical alphas and predicted price direction using a neural network
-                recreated idea from peer reviewed research paper. implemented in python.
+              backtested alpha momentum model which took historical alphas and
+              predicted price direction using a neural network recreated idea
+              from peer reviewed research paper. implemented in python.
             </p>
           </div>
 
