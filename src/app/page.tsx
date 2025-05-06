@@ -50,34 +50,34 @@ export default function Home() {
             <h1 className="text-xl md:text-2xl">experiences</h1>
           </div>
 
-          <div className="experiences-item mt-4">
+          <div className="experiences-item mt-1">
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>sde intern @ amazon </h2>
               <p>may 2025 - august 2025</p>
             </div>
           </div>
 
-          <div className="experiences-item mt-4">
+          <div className="experiences-item mt-1">
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>founding engineer @ strike (YC W25) </h2>
               <p>dec 2024 - march 2025</p>
             </div>
           </div>
 
-          <div className="experiences-item mt-4">
+          <div className="experiences-item mt-1">
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>software engineer intern @ meaglabs.xyz</h2>
               <p>jan 2024 - present</p>
             </div>
           </div>
-          <div className="experiences-item mt-4">
+          <div className="experiences-item mt-1">
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>software engineer and founder @ avalon</h2>
               <p>feb 2024 - jun 2024</p>
             </div>
           </div>
 
-          <div className="experiences-item mt-4">
+          <div className="experiences-item mt-1">
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>lead engineer @ opsmpro</h2>
               <p>may 2021 - sept 2024</p>
