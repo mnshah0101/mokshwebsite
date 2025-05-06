@@ -34,23 +34,13 @@ export default function Home() {
             <p>
               hello! i am moksh shah, a student at georgia tech studying
               computer science with a focus on system architecture and
-              artificial intelligence. i am deeply interested in making cool
-              software products and working with great people. i'm a full stack
-              engineer at heart and i love working on building beautiful uis
-              with clean, efficient backends. my go-to tech stack consists of
-              react and go, but i am always open to learning new technologies.
+              artificial intelligence. i am deeply interested in software and math. right now am reading
+              through all of statistics by Wasserman and taking a class in market microstructures, also brushing up
+              on linear algebra
             </p>
           </div>
 
-          <div className="about-item mt-4">
-            <p>
-              right now, i am working on a few projects in the realm of sports
-              technology that i'm very excited about, both as a developer and
-              equity holder. in my own time, im building in cpp and studying
-              data structures and algos. super interested in finance and the
-              world of quant finance.
-            </p>
-          </div>
+          
         </div>
 
         <hr />
@@ -59,46 +49,32 @@ export default function Home() {
           <div className="experiences-title lucida-bold py-3 md:py-5">
             <h1 className="text-xl md:text-2xl">experiences</h1>
           </div>
-          <div className="experiences-item mt-4">
-            <div className="experiences-item mt-4">
-              <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
-                <h2>software engineer intern @ meaglabs.xyz</h2>
-                <p>jan 2024 - present</p>
-              </div>
-              <p>
-                i was hired as a software engineering intern at megalabs, an ai
-                venture firm. i was responsible for creating the application
-                layer for an ai sports data analyst. the magic is a custom
-                text-to-sql engine which takes user questions and automatically
-                generates sql queries, which we intelligently debug on the fly.
-                i was also responsible for creating the product's rest apis and
-                utilized web socket connections for response streaming. we also
-                utilized the t3 stack for frontend/backend communication. we are
-                in the midst of expanding and fundraising.
-              </p>
-            </div>
 
+          <div className="experiences-item mt-4">
+            <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>sde intern @ amazon </h2>
+              <p>may 2025 - august 2025</p>
+            </div>
+          </div>
+
+          <div className="experiences-item mt-4">
+            <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>founding engineer @ strike (YC W25) </h2>
+              <p>dec 2024 - march 2025</p>
+            </div>
+          </div>
+
+          <div className="experiences-item mt-4">
+            <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>software engineer intern @ meaglabs.xyz</h2>
+              <p>jan 2024 - present</p>
+            </div>
+          </div>
+          <div className="experiences-item mt-4">
             <div className="experiences-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
               <h2>software engineer and founder @ avalon</h2>
               <p>feb 2024 - jun 2024</p>
             </div>
-            <p>
-              since february 2024, i've been working as an engineer and
-              technical lead at avalon in berkeley, ca. alongside a talented
-              team of three engineers, i've been developing a
-              retrieval-augmented generation chatbot tailored for law firms.
-              this chatbot automates eDiscovery and drafts motions and briefs by
-              leveraging tens of thousands of case files using technologies like
-              pinecone, nextjs, dynamodb, typescript, and go. i've also
-              spearheaded the creation of a web socket file transfer pipeline to
-              aws s3, ensuring efficient downstream feeding into our rag model.
-              moreover, i've optimized our language models with langchain to
-              assess the probability of case wins, aggregating metrics from
-              various documents to enhance decision-making processes. as a team,
-              we sucessfully pitched to various venture capitalists and had a
-              couple law firms using our product. we decided put the pause on
-              this until we graduate.
-            </p>
           </div>
 
           <div className="experiences-item mt-4">
@@ -106,16 +82,6 @@ export default function Home() {
               <h2>lead engineer @ opsmpro</h2>
               <p>may 2021 - sept 2024</p>
             </div>
-            <p>
-              since june 2023, i’ve been the go-to person for all things tech at
-              opsm pro in ottawa, ca, as their lead full stack engineer. i built
-              our main e-commerce site using the mern stack (mongo, expressjs,
-              react, nodejs) from the ground up. integrating the stripe api, i
-              set up a system to handle over a dozen products and subscriptions,
-              helping us process more than $1,000,000 in payments each year.
-              plus, i designed and implemented mysql databases to keep all our
-              user and customer info safe.
-            </p>
           </div>
         </div>
 
