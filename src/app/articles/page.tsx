@@ -10,7 +10,7 @@ const sampleArticles = [
     title: "Visualizing Vector Norms: L0, L1, L2, and L∞",
     excerpt: "An interactive exploration of different vector norms and their geometric interpretations, with real-time visualizations of unit balls.",
     tags: ["mathematics", "linear algebra", "vector norms", "visualization"],
-    date: "2024-01-20",
+    date: "2025-07-12",
     interactive: true,
     category: "mathematics"
   }

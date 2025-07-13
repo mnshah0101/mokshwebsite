@@ -57,7 +57,7 @@ const sampleArticles = [
       </ul>
     `,
     tags: ["mathematics", "linear algebra", "vector norms", "visualization"],
-    date: "2024-01-20",
+    date: "2025-07-12",
     interactive: true,
     category: "mathematics"
   }
