@@ -19,8 +19,18 @@ export default function Home() {
             <span className="px-2 md:px-3">|</span>
             <a href="#projects">projects</a>
             <span className="px-2 md:px-3">|</span>
-            <a href="https://medium.com/@mnshah0101">blog</a>
+            <a href="/articles">articles</a>
+            <span className="px-2 md:px-3">|</span>
+            <a href="https://medium.com/@mnshah0101">medium</a>
           </p>
+          <div className="mt-6">
+            <a 
+              href="/articles/" 
+              className="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg lucida text-sm hover:bg-blue-600 transition-colors"
+            >
+              🧮 check out what i'm learning →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -35,8 +45,7 @@ export default function Home() {
               hello! i am moksh shah, a student at georgia tech studying
               computer science with a focus on system architecture and
               artificial intelligence. i am deeply interested in software and math. right now am reading
-              through all of statistics by Wasserman and taking a class in market microstructures, also brushing up
-              on linear algebra
+              through principles of mathematical analysis by rudin and doing gilbert strang's matrix methods for data analysis and signal processing.
             </p>
           </div>
 
@@ -112,6 +121,36 @@ export default function Home() {
             <p>
               c++ project that helps visualize vector operations in 3-d space
               with opengui
+            </p>
+          </div>
+
+          <div className="projects-item mt-4">
+            <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>github.com/mnshah0101/ml_library_c-</h2>
+            </div>
+
+            <p>
+              a modern c++ machine learning library that provides implementations of various machine learning algorithms using eigen for efficient matrix operations. includes supervised learning models (linear regression, logistic regression, knn, decision trees), unsupervised learning (k-means clustering, pca), data handling with csv loading and dataset management, and optimization with gradient descent and learning rate scheduling. built with c++17, eigen, and cmake.
+            </p>
+          </div>
+
+          <div className="projects-item mt-4">
+            <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>github.com/mnshah0101/stats_lib_cpp</h2>
+            </div>
+
+            <p>
+              a modern c++17 header+static library for probability distributions, random number generation, and statistical estimation. includes probability distributions (normal, beta, gamma, poisson, binomial), random number generators, estimation routines (mle), and a clean api with minimal dependencies. designed for quant, ml, or whenever you need fast statistics in c++. built with c++17 and cmake.
+            </p>
+          </div>
+
+          <div className="projects-item mt-4">
+            <div className="projects-subtitle text-base md:text-l lucida-bold flex justify-between my-2 md:my-4">
+              <h2>github.com/mnshah0101/polymarket_bot</h2>
+            </div>
+
+            <p>
+              a c++ bot that automatically spots and takes advantage of price differences between traditional sportsbooks and polymarket. watches odds on the odds api and polymarket, spots arbitrage opportunities, and automatically places bets when profitable. includes kelly criterion betting, sqlite for transaction history, and docker support. built with c++17, libcurl, nlohmann/json, and cmake.
             </p>
           </div>
 
