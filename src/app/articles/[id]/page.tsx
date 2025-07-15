@@ -16,6 +16,20 @@ const sampleArticles = [
     image: "/images/vector-norms-preview.png",
     description: "Explore the fascinating world of vector norms through interactive visualizations. Learn about L0, L1, L2, and L∞ norms with real-time demonstrations and geometric interpretations.",
     keywords: "vector norms, linear algebra, mathematics, interactive visualization, L0 norm, L1 norm, L2 norm, L∞ norm, machine learning, data science"
+  },
+  {
+    id: "hard-margin-svm",
+    title: "Interactive Hard Margin SVM",
+    excerpt: "Explore Support Vector Machines with hard margins through an interactive visualization. Drag points and see how the decision boundary and margins adapt in real-time.",
+    tags: ["machine learning", "svm", "classification", "interactive"],
+    date: "2025-01-15",
+    interactive: true,
+    category: "machine learning",
+    author: "Moksh Shah",
+    readTime: "7 min read",
+    image: "/images/svm-preview.png",
+    description: "Learn about Support Vector Machines through interactive visualization. Understand hard margins, decision boundaries, and support vectors with hands-on exploration.",
+    keywords: "support vector machine, SVM, hard margin, classification, machine learning, decision boundary, margin, support vectors"
   }
 ];
 

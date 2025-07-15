@@ -13,6 +13,15 @@ const sampleArticles = [
     date: "2025-07-12",
     interactive: true,
     category: "mathematics"
+  },
+  {
+    id: "hard-margin-svm",
+    title: "Interactive Hard Margin SVM",
+    excerpt: "Explore Support Vector Machines with hard margins through an interactive visualization. Drag points and see how the decision boundary and margins adapt in real-time.",
+    tags: ["machine learning", "svm", "classification", "interactive"],
+    date: "2025-01-15",
+    interactive: true,
+    category: "machine learning"
   }
 ];
 

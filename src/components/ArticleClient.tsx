@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import VectorNormsDemo from "./VectorNormsDemo";
+import SVDDemo from "./SVDDemo";
 import ArticleStructuredData from "./ArticleStructuredData";
 
 // Sample articles data - you can replace this with your actual articles
@@ -66,6 +67,50 @@ const sampleArticles = [
     image: "/images/vector-norms-preview.png",
     description: "Explore the fascinating world of vector norms through interactive visualizations. Learn about L0, L1, L2, and L∞ norms with real-time demonstrations and geometric interpretations.",
     keywords: "vector norms, linear algebra, mathematics, interactive visualization, L0 norm, L1 norm, L2 norm, L∞ norm, machine learning, data science"
+  },
+  {
+    id: "hard-margin-svm",
+    title: "Interactive Hard Margin SVM",
+    excerpt: "Explore Support Vector Machines with hard margins through an interactive visualization. Drag points and see how the decision boundary and margins adapt in real-time.",
+    content: `
+      <h2>Understanding Hard Margin SVM</h2>
+      <p>Support Vector Machines (SVM) are powerful supervised learning algorithms used for classification and regression. The hard margin SVM assumes that the data is linearly separable and finds the optimal hyperplane that maximizes the margin between classes.</p>
+      
+      <h3>Key Concepts</h3>
+      <ul>
+        <li><strong>Decision Boundary:</strong> The hyperplane that separates the two classes</li>
+        <li><strong>Margin:</strong> The distance between the decision boundary and the nearest data points</li>
+        <li><strong>Support Vectors:</strong> The data points closest to the decision boundary</li>
+        <li><strong>Hard Margin:</strong> No data points are allowed within the margin</li>
+      </ul>
+      
+      <h3>Mathematical Formulation</h3>
+      <p>For a 2D case, the decision boundary is defined by:</p>
+      <p><strong>w₁x + w₂y + b = 0</strong></p>
+      <p>Where:</p>
+      <ul>
+        <li><strong>w = (w₁, w₂):</strong> Weight vector (normal to the decision boundary)</li>
+        <li><strong>b:</strong> Bias term</li>
+        <li><strong>Margin width:</strong> 2/||w||</li>
+      </ul>
+      
+      <h3>Optimization Problem</h3>
+      <p>The SVM optimization problem is:</p>
+      <p><strong>Minimize:</strong> ½||w||²</p>
+      <p><strong>Subject to:</strong> yᵢ(w·xᵢ + b) ≥ 1 for all training points</p>
+      
+      <h3>Geometric Interpretation</h3>
+      <p>The SVM finds the widest possible "street" between the two classes. The decision boundary runs down the middle of this street, and the margin boundaries define the edges.</p>
+    `,
+    tags: ["machine learning", "svm", "classification", "interactive"],
+    date: "2025-01-15",
+    interactive: true,
+    category: "machine learning",
+    author: "Moksh Shah",
+    readTime: "7 min read",
+    image: "/images/svm-preview.png",
+    description: "Learn about Support Vector Machines through interactive visualization. Understand hard margins, decision boundaries, and support vectors with hands-on exploration.",
+    keywords: "support vector machine, SVM, hard margin, classification, machine learning, decision boundary, margin, support vectors"
   }
 ];
 
@@ -150,6 +195,12 @@ export default function ArticleClient() {
         {article.interactive && article.id === "vector-norms-visualization" && (
           <div className="mt-12">
             <VectorNormsDemo />
+          </div>
+        )}
+        
+        {article.interactive && article.id === "hard-margin-svm" && (
+          <div className="mt-12">
+            <SVDDemo />
           </div>
         )}
 
