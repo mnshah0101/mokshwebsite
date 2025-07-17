@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import VectorNormsDemo from "./VectorNormsDemo";
 import SVDDemo from "./SVDDemo";
+import QDADemo from "./QDADemo";
 import ArticleStructuredData from "./ArticleStructuredData";
 
 // Sample articles data - you can replace this with your actual articles
@@ -111,6 +112,180 @@ const sampleArticles = [
     image: "/images/svm-preview.png",
     description: "Learn about Support Vector Machines through interactive visualization. Understand hard margins, decision boundaries, and support vectors with hands-on exploration.",
     keywords: "support vector machine, SVM, hard margin, classification, machine learning, decision boundary, margin, support vectors"
+  },
+  {
+    id: "quadratic-discriminant-analysis",
+    title: "Interactive Quadratic Discriminant Analysis (QDA)",
+    excerpt: "Explore Quadratic Discriminant Analysis through mathematical derivations and interactive visualizations. Understand Gaussian models, covariance matrices, and quadratic decision boundaries.",
+    content: `
+      <h2>Introduction to Quadratic Discriminant Analysis</h2>
+      <p>Quadratic Discriminant Analysis (QDA) is a powerful statistical classification method that extends Linear Discriminant Analysis (LDA) by allowing different covariance matrices for each class. This flexibility enables QDA to model more complex, non-linear decision boundaries.</p>
+      
+      <h3>Mathematical Foundation</h3>
+      <p>QDA assumes that each class follows a multivariate Gaussian distribution with its own covariance matrix:</p>
+      <p><strong>Class k:</strong> x | y = k ~ N(μₖ, Σₖ)</p>
+      <p>Where:</p>
+      <ul>
+        <li><strong>μₖ:</strong> Mean vector for class k</li>
+        <li><strong>Σₖ:</strong> Covariance matrix for class k (class-specific)</li>
+        <li><strong>πₖ:</strong> Prior probability of class k</li>
+      </ul>
+      
+      <h3>The Multivariate Gaussian Distribution</h3>
+      <p>For a d-dimensional feature vector x, the multivariate Gaussian probability density function is:</p>
+      <p><strong>p(x|μ, Σ) = (2π)^(-d/2) |Σ|^(-1/2) exp(-½(x-μ)ᵀΣ⁻¹(x-μ))</strong></p>
+      <p>The exponent contains the <strong>Mahalanobis distance</strong>: (x-μ)ᵀΣ⁻¹(x-μ)</p>
+      
+      <h3>Bayes' Theorem and Classification</h3>
+      <p>Using Bayes' theorem, the posterior probability of class k given observation x is:</p>
+      <p><strong>P(y=k|x) = P(x|y=k)P(y=k) / P(x)</strong></p>
+      <p>Where:</p>
+      <ul>
+        <li><strong>P(x|y=k):</strong> Likelihood (multivariate Gaussian)</li>
+        <li><strong>P(y=k):</strong> Prior probability πₖ</li>
+        <li><strong>P(x):</strong> Evidence (normalizing constant)</li>
+      </ul>
+      
+      <h3>QDA Decision Function</h3>
+      <p>Taking the logarithm of the posterior probabilities, the QDA decision function becomes:</p>
+      <p><strong>δₖ(x) = -½(x-μₖ)ᵀΣₖ⁻¹(x-μₖ) - ½log|Σₖ| + log(πₖ)</strong></p>
+      
+      <h4>Components of the Decision Function:</h4>
+      <ul>
+        <li><strong>Quadratic term:</strong> -(x-μₖ)ᵀΣₖ⁻¹(x-μₖ) - measures distance from class mean</li>
+        <li><strong>Covariance penalty:</strong> -½log|Σₖ| - penalizes high variance</li>
+        <li><strong>Prior term:</strong> log(πₖ) - favors more frequent classes</li>
+      </ul>
+      
+      <h3>Decision Boundary Mathematics</h3>
+      <p>The decision boundary between classes i and j is defined by:</p>
+      <p><strong>δᵢ(x) = δⱼ(x)</strong></p>
+      <p>Expanding this equation:</p>
+      <p><strong>-½(x-μᵢ)ᵀΣᵢ⁻¹(x-μᵢ) - ½log|Σᵢ| + log(πᵢ) = -½(x-μⱼ)ᵀΣⱼ⁻¹(x-μⱼ) - ½log|Σⱼ| + log(πⱼ)</strong></p>
+      
+      <h4>Why Quadratic?</h4>
+      <p>The decision boundary is quadratic because:</p>
+      <ul>
+        <li>Each class has its own covariance matrix Σₖ</li>
+        <li>The quadratic form (x-μₖ)ᵀΣₖ⁻¹(x-μₖ) creates elliptical contours</li>
+        <li>Different Σₖ values create different ellipse shapes and orientations</li>
+        <li>The boundary is the intersection of these elliptical regions</li>
+      </ul>
+      
+      <h3>Parameter Estimation</h3>
+      <p>Given training data, QDA parameters are estimated using maximum likelihood:</p>
+      
+      <h4>Prior Probabilities:</h4>
+      <p><strong>π̂ₖ = nₖ / n</strong> (fraction of samples in class k)</p>
+      
+      <h4>Mean Vectors:</h4>
+      <p><strong>μ̂ₖ = (1/nₖ) Σᵢ:yᵢ=k xᵢ</strong> (sample mean for class k)</p>
+      
+      <h4>Covariance Matrices:</h4>
+      <p><strong>Σ̂ₖ = (1/(nₖ-1)) Σᵢ:yᵢ=k (xᵢ-μ̂ₖ)(xᵢ-μ̂ₖ)ᵀ</strong></p>
+      
+      <h3>QDA vs LDA: Key Differences</h3>
+      <div class="comparison-table">
+        <table border="1" style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+          <tr>
+            <th style="padding: 8px; background-color: #f5f5f5;">Aspect</th>
+            <th style="padding: 8px; background-color: #f5f5f5;">LDA</th>
+            <th style="padding: 8px; background-color: #f5f5f5;">QDA</th>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Covariance</td>
+            <td style="padding: 8px;">Shared: Σ₁ = Σ₂ = Σ</td>
+            <td style="padding: 8px;">Separate: Σ₁ ≠ Σ₂</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Decision Boundary</td>
+            <td style="padding: 8px;">Linear hyperplane</td>
+            <td style="padding: 8px;">Quadratic curve</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Parameters</td>
+            <td style="padding: 8px;">O(d²) + O(d×k)</td>
+            <td style="padding: 8px;">O(d²×k)</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Flexibility</td>
+            <td style="padding: 8px;">Less flexible</td>
+            <td style="padding: 8px;">More flexible</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Overfitting Risk</td>
+            <td style="padding: 8px;">Lower</td>
+            <td style="padding: 8px;">Higher</td>
+          </tr>
+        </table>
+      </div>
+      
+      <h3>Geometric Interpretation</h3>
+      <p>QDA creates <strong>confidence ellipses</strong> for each class:</p>
+      <ul>
+        <li><strong>Shape:</strong> Determined by eigenvalues of Σₖ</li>
+        <li><strong>Orientation:</strong> Determined by eigenvectors of Σₖ</li>
+        <li><strong>Size:</strong> Scaled by confidence level (e.g., 95%)</li>
+        <li><strong>Center:</strong> Located at class mean μₖ</li>
+      </ul>
+      
+      <h3>Eigendecomposition and Ellipses</h3>
+      <p>For covariance matrix Σₖ = QΛQᵀ:</p>
+      <ul>
+        <li><strong>Q:</strong> Eigenvector matrix (rotation)</li>
+        <li><strong>Λ:</strong> Eigenvalue matrix (scaling)</li>
+        <li><strong>Semi-axes:</strong> √(χ²₀.₀₅ × λᵢ) for 95% confidence</li>
+      </ul>
+      
+      <h3>Applications and Use Cases</h3>
+      <ul>
+        <li><strong>Medical diagnosis:</strong> Different symptom patterns for diseases</li>
+        <li><strong>Finance:</strong> Risk assessment with varying volatility</li>
+        <li><strong>Pattern recognition:</strong> Non-linear feature relationships</li>
+        <li><strong>Quality control:</strong> Manufacturing process monitoring</li>
+      </ul>
+      
+      <h3>Assumptions and Limitations</h3>
+      <ul>
+        <li><strong>Gaussian assumption:</strong> Each class follows multivariate normal distribution</li>
+        <li><strong>Independence:</strong> Features should be conditionally independent given class</li>
+        <li><strong>Sample size:</strong> Needs sufficient data to estimate covariance matrices</li>
+        <li><strong>Curse of dimensionality:</strong> Performance degrades with high dimensions</li>
+      </ul>
+      
+     
+      
+      <h3>Advanced Topics</h3>
+      
+      <h4>Regularized QDA</h4>
+      <p>To prevent overfitting, regularization can be applied:</p>
+      <p><strong>Σ̂ₖ(α) = (1-α)Σ̂ₖ + αΣ̂pooled</strong></p>
+      <p>Where α ∈ [0,1] controls the trade-off between QDA (α=0) and LDA (α=1).</p>
+      
+      <h4>Computational Complexity</h4>
+      <ul>
+        <li><strong>Training:</strong> O(nd² + kd³) - matrix operations dominate</li>
+        <li><strong>Prediction:</strong> O(d²) per sample - matrix-vector products</li>
+        <li><strong>Storage:</strong> O(kd²) - k covariance matrices</li>
+      </ul>
+      
+      <h4>Numerical Stability</h4>
+      <p>Key considerations for implementation:</p>
+      <ul>
+        <li><strong>Singular matrices:</strong> Add regularization ε·I to Σₖ</li>
+        <li><strong>Log-space computation:</strong> Avoid overflow in exponentials</li>
+        <li><strong>Cholesky decomposition:</strong> Efficient matrix inversion</li>
+      </ul>
+    `,
+    tags: ["machine learning", "qda", "classification", "gaussian", "statistics", "interactive"],
+    date: "2025-01-17",
+    interactive: true,
+    category: "machine learning",
+    author: "Moksh Shah",
+    readTime: "12 min read",
+    image: "/images/qda-preview.png",
+    description: "Master Quadratic Discriminant Analysis through comprehensive mathematical exposition and interactive visualization. Understand Gaussian models, covariance matrices, and quadratic decision boundaries with hands-on exploration.",
+    keywords: "quadratic discriminant analysis, QDA, classification, machine learning, gaussian distribution, covariance matrix, decision boundary, bayes theorem, multivariate statistics"
   }
 ];
 
@@ -201,6 +376,12 @@ export default function ArticleClient() {
         {article.interactive && article.id === "hard-margin-svm" && (
           <div className="mt-12">
             <SVDDemo />
+          </div>
+        )}
+        
+        {article.interactive && article.id === "quadratic-discriminant-analysis" && (
+          <div className="mt-12">
+            <QDADemo />
           </div>
         )}
 

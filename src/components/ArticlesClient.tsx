@@ -22,6 +22,15 @@ const sampleArticles = [
     date: "2025-01-15",
     interactive: true,
     category: "machine learning"
+  },
+  {
+    id: "quadratic-discriminant-analysis",
+    title: "Interactive Quadratic Discriminant Analysis",
+    excerpt: "Visualize how QDA creates quadratic decision boundaries by interactively adding and moving data points. See real-time updates of class parameters and confidence ellipses.",
+    tags: ["machine learning", "qda", "classification", "interactive", "statistics"],
+    date: "2025-07-17",
+    interactive: true,
+    category: "machine learning"
   }
 ];
 
