@@ -6,6 +6,8 @@ import { useParams } from "next/navigation";
 import VectorNormsDemo from "./VectorNormsDemo";
 import SVDDemo from "./SVDDemo";
 import QDADemo from "./QDADemo";
+import SymmetricMatrixDemo from "./SymmetricMatrixDemo";
+import CovarianceMatrixDemo from "./CovarianceMatrixDemo";
 import ArticleStructuredData from "./ArticleStructuredData";
 
 // Sample articles data - you can replace this with your actual articles
@@ -286,6 +288,227 @@ const sampleArticles = [
     image: "/images/qda-preview.png",
     description: "Master Quadratic Discriminant Analysis through comprehensive mathematical exposition and interactive visualization. Understand Gaussian models, covariance matrices, and quadratic decision boundaries with hands-on exploration.",
     keywords: "quadratic discriminant analysis, QDA, classification, machine learning, gaussian distribution, covariance matrix, decision boundary, bayes theorem, multivariate statistics"
+  },
+  {
+    id: "symmetric-matrices-quadratic-forms",
+    title: "Symmetric Matrices and Quadratic Forms: From Linear Algebra to Statistics",
+    excerpt: "Explore the deep connections between symmetric matrices, quadratic forms, eigendecomposition, and multivariate statistics through interactive visualizations.",
+    content: `
+      <h2>Introduction: The Bridge Between Linear Algebra and Statistics</h2>
+      <p>Symmetric matrices are fundamental structures that appear throughout mathematics, from pure linear algebra to applied statistics. They provide the key to understanding quadratic forms, optimization landscapes, and the geometry of multivariate distributions. This article explores these connections through interactive visualizations.</p>
+      
+      <h3>What Makes a Matrix Symmetric?</h3>
+      <p>A matrix <strong>A</strong> is symmetric if <strong>A = Aᵀ</strong>, meaning it equals its own transpose. In component form:</p>
+      <p><strong>aᵢⱼ = aⱼᵢ</strong> for all i, j</p>
+      
+      <p>For a 2×2 matrix, this means:</p>
+      <p><strong>A = [a  b]</strong></p>
+      <p><strong>    [b  d]</strong></p>
+      
+      <h3>Quadratic Forms: The Heart of the Matter</h3>
+      <p>A quadratic form is a polynomial where each term has degree 2:</p>
+      <p><strong>Q(x, y) = ax² + 2bxy + dy²</strong></p>
+      
+      <p>This can be written in matrix form as:</p>
+      <p><strong>Q(x) = xᵀAx</strong></p>
+      
+      <p>where <strong>x = [x, y]ᵀ</strong> and <strong>A = [a b; b d]</strong></p>
+      
+      <h3>The Power of Eigendecomposition</h3>
+      <p>Every symmetric matrix can be diagonalized using its eigenvalues and eigenvectors:</p>
+      <p><strong>A = QΛQᵀ</strong></p>
+      
+      <p>Where:</p>
+      <ul>
+        <li><strong>Q:</strong> Matrix of orthonormal eigenvectors (rotation)</li>
+        <li><strong>Λ:</strong> Diagonal matrix of eigenvalues (scaling)</li>
+        <li><strong>QQᵀ = I:</strong> Q is orthogonal</li>
+      </ul>
+      
+      <h3>Geometric Interpretation</h3>
+      <p>The eigendecomposition reveals the geometric structure of quadratic forms:</p>
+      <ul>
+        <li><strong>Eigenvectors:</strong> Principal axes of the elliptical contours</li>
+        <li><strong>Eigenvalues:</strong> Scaling factors along each principal axis</li>
+        <li><strong>Contour lines:</strong> Level sets of the quadratic form Q(x) = c</li>
+      </ul>
+      
+      <div id="symmetric-matrix-demo"></div>
+      
+      <h3>Classification of Quadratic Forms</h3>
+      <p>The eigenvalues determine the nature of the quadratic form:</p>
+      
+      <h4>Positive Definite (λ₁, λ₂ > 0)</h4>
+      <ul>
+        <li>All contours are ellipses centered at origin</li>
+        <li>Function has global minimum at origin</li>
+        <li>Example: x² + y² (identity matrix)</li>
+      </ul>
+      
+      <h4>Negative Definite (λ₁, λ₂ < 0)</h4>
+      <ul>
+        <li>All contours are ellipses, function has maximum</li>
+        <li>Function decreases in all directions from origin</li>
+        <li>Example: -x² - y²</li>
+      </ul>
+      
+      <h4>Indefinite (λ₁ > 0, λ₂ < 0 or vice versa)</h4>
+      <ul>
+        <li>Contours are hyperbolas</li>
+        <li>Origin is a saddle point</li>
+        <li>Example: x² - y²</li>
+      </ul>
+      
+      <h4>Positive/Negative Semidefinite</h4>
+      <ul>
+        <li>One or more eigenvalues equal zero</li>
+        <li>Degenerate case - function is constant along some directions</li>
+      </ul>
+      
+      <h3>Principal Component Analysis Connection</h3>
+      <p>The eigendecomposition of symmetric matrices is central to PCA:</p>
+      <ul>
+        <li><strong>Covariance matrix:</strong> Always symmetric</li>
+        <li><strong>Principal components:</strong> Eigenvectors of covariance matrix</li>
+        <li><strong>Explained variance:</strong> Eigenvalues show importance of each component</li>
+      </ul>
+      
+      <h2>From Linear Algebra to Statistics: The Covariance Matrix</h2>
+      
+      <p>One of the most important applications of symmetric matrices in statistics is the covariance matrix of a multivariate random variable.</p>
+      
+      <h3>The Multivariate Gaussian Distribution</h3>
+      <p>For a random vector <strong>X</strong> with mean <strong>μ</strong> and covariance matrix <strong>Σ</strong>, the probability density function is:</p>
+      
+      <p><strong>f(x) = (2π)^(-d/2) |Σ|^(-1/2) exp(-½(x-μ)ᵀΣ⁻¹(x-μ))</strong></p>
+      
+      <h3>The Covariance Matrix Structure</h3>
+      <p>The covariance matrix <strong>Σ</strong> encodes all second-order statistics:</p>
+      <p><strong>Σ = [Var(X₁)    Cov(X₁,X₂)]</strong></p>
+      <p><strong>    [Cov(X₂,X₁) Var(X₂)  ]</strong></p>
+      
+      <p>Key properties:</p>
+      <ul>
+        <li><strong>Symmetric:</strong> Cov(X₁,X₂) = Cov(X₂,X₁)</li>
+        <li><strong>Positive semidefinite:</strong> All eigenvalues ≥ 0</li>
+        <li><strong>Diagonal elements:</strong> Variances (always positive)</li>
+        <li><strong>Off-diagonal elements:</strong> Covariances (can be negative)</li>
+      </ul>
+      
+      <h3>Geometric Interpretation of Covariance</h3>
+      <p>The covariance matrix determines the shape and orientation of the data cloud:</p>
+      
+      <h4>Eigendecomposition of Covariance:</h4>
+      <p><strong>Σ = QΛQᵀ</strong></p>
+      
+      <ul>
+        <li><strong>Eigenvectors (Q):</strong> Principal directions of variation</li>
+        <li><strong>Eigenvalues (Λ):</strong> Amount of variance in each direction</li>
+        <li><strong>Confidence ellipses:</strong> Contours of constant Mahalanobis distance</li>
+      </ul>
+      
+      <h3>Mahalanobis Distance</h3>
+      <p>The quadratic form <strong>(x-μ)ᵀΣ⁻¹(x-μ)</strong> is the squared Mahalanobis distance, which:</p>
+      <ul>
+        <li>Accounts for different variances in each dimension</li>
+        <li>Accounts for correlations between dimensions</li>
+        <li>Reduces to Euclidean distance when Σ = I</li>
+        <li>Follows a χ² distribution under the Gaussian assumption</li>
+      </ul>
+      
+      <h3>Confidence Regions</h3>
+      <p>For a d-dimensional Gaussian, the confidence region is defined by:</p>
+      <p><strong>(x-μ)ᵀΣ⁻¹(x-μ) ≤ χ²ₐ(d)</strong></p>
+      
+      <p>Common confidence levels:</p>
+      <ul>
+        <li><strong>68%:</strong> χ²₀.₆₈(2) ≈ 2.28</li>
+        <li><strong>95%:</strong> χ²₀.₉₅(2) ≈ 5.99</li>
+        <li><strong>99%:</strong> χ²₀.₉₉(2) ≈ 9.21</li>
+      </ul>
+      
+      <div id="covariance-matrix-demo"></div>
+      
+      <h3>Correlation vs Covariance</h3>
+      <p>The correlation coefficient normalizes covariance:</p>
+      <p><strong>ρ = Cov(X,Y) / (σₓσᵧ)</strong></p>
+      
+      <p>Properties:</p>
+      <ul>
+        <li><strong>Range:</strong> -1 ≤ ρ ≤ 1</li>
+        <li><strong>ρ = 0:</strong> Uncorrelated (ellipses aligned with axes)</li>
+        <li><strong>ρ > 0:</strong> Positive correlation (ellipses tilted ↗)</li>
+        <li><strong>ρ < 0:</strong> Negative correlation (ellipses tilted ↖)</li>
+        <li><strong>|ρ| → 1:</strong> Strong linear relationship (thin ellipses)</li>
+      </ul>
+      
+      <h3>Applications in Machine Learning</h3>
+      
+      <h4>Gaussian Mixture Models</h4>
+      <p>Each component has its own covariance matrix, allowing flexible cluster shapes.</p>
+      
+      <h4>Quadratic Discriminant Analysis (QDA)</h4>
+      <p>Uses different covariance matrices for each class, creating quadratic decision boundaries.</p>
+      
+      <h4>Anomaly Detection</h4>
+      <p>Points with large Mahalanobis distance are potential outliers.</p>
+      
+      <h4>Dimensionality Reduction</h4>
+      <p>PCA uses eigendecomposition of covariance matrix to find low-dimensional representations.</p>
+      
+      <h3>Computational Considerations</h3>
+      
+      <h4>Numerical Stability</h4>
+      <ul>
+        <li><strong>Condition number:</strong> Ratio of largest to smallest eigenvalue</li>
+        <li><strong>Regularization:</strong> Add λI to make matrix well-conditioned</li>
+        <li><strong>Cholesky decomposition:</strong> Efficient for positive definite matrices</li>
+      </ul>
+      
+      <h4>High-Dimensional Challenges</h4>
+      <ul>
+        <li><strong>Sample complexity:</strong> Need O(d²) samples to estimate Σ reliably</li>
+        <li><strong>Curse of dimensionality:</strong> Gaussian assumption becomes harder to verify</li>
+        <li><strong>Regularization techniques:</strong> Shrinkage, factor models, sparse covariance</li>
+      </ul>
+      
+      <h3>Advanced Topics</h3>
+      
+      <h4>Matrix Calculus</h4>
+      <p>Key derivatives involving quadratic forms:</p>
+      <ul>
+        <li><strong>∂(xᵀAx)/∂x = (A + Aᵀ)x = 2Ax</strong> (when A is symmetric)</li>
+        <li><strong>∂(xᵀAx)/∂A = xxᵀ</strong></li>
+      </ul>
+      
+      <h4>Optimization Connections</h4>
+      <p>Quadratic forms appear in:</p>
+      <ul>
+        <li><strong>Least squares:</strong> ||Ax - b||² = (Ax-b)ᵀ(Ax-b)</li>
+        <li><strong>Regularization:</strong> ||x||² = xᵀx</li>
+        <li><strong>Trust regions:</strong> Constrained quadratic approximations</li>
+      </ul>
+      
+      <h3>Summary: The Universal Language</h3>
+      <p>Symmetric matrices and quadratic forms provide a universal language connecting:</p>
+      <ul>
+        <li><strong>Geometry:</strong> Ellipses, hyperboloids, and distance metrics</li>
+        <li><strong>Optimization:</strong> Convex functions and critical point analysis</li>
+        <li><strong>Statistics:</strong> Multivariate distributions and confidence regions</li>
+        <li><strong>Machine Learning:</strong> Kernels, regularization, and dimensionality reduction</li>
+      </ul>
+      
+      <p>Understanding these connections provides deep insight into the mathematical structures underlying many areas of data science and machine learning.</p>
+    `,
+    tags: ["mathematics", "linear algebra", "statistics", "matrices", "quadratic forms", "eigenvalues", "covariance", "gaussian"],
+    date: "2025-01-21",
+    interactive: true,
+    category: "mathematics",
+    author: "Moksh Shah",
+    readTime: "15 min read",
+    image: "/images/symmetric-matrices-preview.png",
+    description: "Explore the fundamental connections between symmetric matrices, quadratic forms, eigendecomposition, and multivariate statistics through comprehensive mathematical exposition and interactive visualizations.",
+    keywords: "symmetric matrices, quadratic forms, eigenvalues, eigenvectors, covariance matrix, multivariate gaussian, linear algebra, statistics, interactive visualization"
   }
 ];
 
@@ -382,6 +605,13 @@ export default function ArticleClient() {
         {article.interactive && article.id === "quadratic-discriminant-analysis" && (
           <div className="mt-12">
             <QDADemo />
+          </div>
+        )}
+        
+        {article.interactive && article.id === "symmetric-matrices-quadratic-forms" && (
+          <div className="mt-12 space-y-12">
+            <SymmetricMatrixDemo />
+            <CovarianceMatrixDemo />
           </div>
         )}
 

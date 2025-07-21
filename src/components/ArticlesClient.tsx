@@ -31,6 +31,15 @@ const sampleArticles = [
     date: "2025-07-17",
     interactive: true,
     category: "machine learning"
+  },
+  {
+    id: "symmetric-matrices-quadratic-forms",
+    title: "Symmetric Matrices and Quadratic Forms: From Linear Algebra to Statistics",
+    excerpt: "Explore the deep connections between symmetric matrices, quadratic forms, eigendecomposition, and multivariate statistics through interactive visualizations.",
+    tags: ["mathematics", "linear algebra", "statistics", "matrices", "quadratic forms", "eigenvalues", "covariance", "gaussian"],
+    date: "2025-01-21",
+    interactive: true,
+    category: "mathematics"
   }
 ];
 
