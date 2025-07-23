@@ -40,6 +40,15 @@ const sampleArticles = [
     date: "2025-01-21",
     interactive: true,
     category: "mathematics"
+  },
+  {
+    id: "gradient-descent-newtons-method",
+    title: "Gradient Descent vs Newton's Method: A Complete Guide to Multivariate Optimization",
+    excerpt: "Master the mathematics behind gradient descent and Newton's method with interactive visualizations. Explore convexity, convergence rates, and practical implementation details.",
+    tags: ["optimization", "machine learning", "mathematics", "gradient descent", "newtons method", "convexity", "interactive"],
+    date: "2025-01-23",
+    interactive: true,
+    category: "mathematics"
   }
 ];
 

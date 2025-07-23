@@ -30,6 +30,20 @@ const sampleArticles = [
     image: "/images/svm-preview.png",
     description: "Learn about Support Vector Machines through interactive visualization. Understand hard margins, decision boundaries, and support vectors with hands-on exploration.",
     keywords: "support vector machine, SVM, hard margin, classification, machine learning, decision boundary, margin, support vectors"
+  },
+  {
+    id: "gradient-descent-newtons-method",
+    title: "Gradient Descent vs Newton's Method: A Complete Guide to Multivariate Optimization",
+    excerpt: "Master the mathematics behind gradient descent and Newton's method with interactive visualizations. Explore convexity, convergence rates, and practical implementation details.",
+    tags: ["optimization", "machine learning", "mathematics", "gradient descent", "newtons method", "convexity", "interactive"],
+    date: "2025-01-23",
+    interactive: true,
+    category: "mathematics",
+    author: "Moksh Shah",
+    readTime: "18 min read",
+    image: "/images/optimization-preview.png",
+    description: "Master the mathematics behind gradient descent and Newton's method with interactive visualizations. Explore convexity, convergence rates, and practical implementation details through comprehensive mathematical exposition.",
+    keywords: "gradient descent, newtons method, optimization, machine learning, convexity, convergence, hessian, interactive visualization, multivariate optimization"
   }
 ];
 

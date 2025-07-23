@@ -8,6 +8,8 @@ import SVDDemo from "./SVDDemo";
 import QDADemo from "./QDADemo";
 import SymmetricMatrixDemo from "./SymmetricMatrixDemo";
 import CovarianceMatrixDemo from "./CovarianceMatrixDemo";
+import GradientDescentDemo from "./GradientDescentDemo";
+import ConvexityDemo from "./ConvexityDemo";
 import ArticleStructuredData from "./ArticleStructuredData";
 
 // Sample articles data - you can replace this with your actual articles
@@ -509,6 +511,364 @@ const sampleArticles = [
     image: "/images/symmetric-matrices-preview.png",
     description: "Explore the fundamental connections between symmetric matrices, quadratic forms, eigendecomposition, and multivariate statistics through comprehensive mathematical exposition and interactive visualizations.",
     keywords: "symmetric matrices, quadratic forms, eigenvalues, eigenvectors, covariance matrix, multivariate gaussian, linear algebra, statistics, interactive visualization"
+  },
+  {
+    id: "gradient-descent-newtons-method",
+    title: "Gradient Descent vs Newton's Method: A Complete Guide to Multivariate Optimization",
+    excerpt: "Master the mathematics behind gradient descent and Newton's method with interactive visualizations. Explore convexity, convergence rates, and practical implementation details.",
+    content: `
+      <h2>Introduction to Multivariate Optimization</h2>
+      <p>Optimization is at the heart of machine learning, statistics, and engineering. When we want to find the minimum or maximum of a function, we need powerful algorithms that can navigate the landscape of possibilities efficiently. Two of the most fundamental and widely-used methods are <strong>Gradient Descent</strong> and <strong>Newton's Method</strong>.</p>
+      
+      <p>This article provides a comprehensive comparison of these methods, exploring their mathematical foundations, convergence properties, and practical applications through interactive visualizations.</p>
+      
+      <h2>Mathematical Foundations</h2>
+      
+      <h3>The Optimization Problem</h3>
+      <p>Consider the general unconstrained optimization problem:</p>
+      <p><strong>minimize f(x)</strong></p>
+      <p>where <strong>x ∈ ℝⁿ</strong> and <strong>f: ℝⁿ → ℝ</strong> is a differentiable function.</p>
+      
+      <h3>First-Order Necessary Conditions</h3>
+      <p>At a local minimum x*, the gradient must vanish:</p>
+      <p><strong>∇f(x*) = 0</strong></p>
+      
+      <p>This gives us our target: find points where the gradient is zero.</p>
+      
+      <h2>Gradient Descent: The First-Order Method</h2>
+      
+      <h3>The Algorithm</h3>
+      <p>Gradient descent uses only first-order information (the gradient) to iteratively update the current estimate:</p>
+      
+      <p><strong>x_{k+1} = x_k - α_k ∇f(x_k)</strong></p>
+      
+      <p>Where:</p>
+      <ul>
+        <li><strong>x_k:</strong> Current iterate</li>
+        <li><strong>α_k:</strong> Step size (learning rate)</li>
+        <li><strong>∇f(x_k):</strong> Gradient at current point</li>
+      </ul>
+      
+      <h3>Geometric Interpretation</h3>
+      <p>Gradient descent moves in the direction of <strong>steepest descent</strong>. The negative gradient -∇f(x) points in the direction of fastest decrease of the function at point x.</p>
+      
+      <h3>Step Size Selection</h3>
+      <p>The choice of step size α is crucial:</p>
+      <ul>
+        <li><strong>Too small:</strong> Slow convergence</li>
+        <li><strong>Too large:</strong> Oscillation or divergence</li>
+        <li><strong>Adaptive methods:</strong> Line search, Armijo condition</li>
+      </ul>
+      
+      <h3>Convergence Analysis</h3>
+      <p>For strongly convex functions with Lipschitz gradients:</p>
+      <ul>
+        <li><strong>Linear convergence rate:</strong> O(ρᵏ) where ρ < 1</li>
+        <li><strong>Rate depends on condition number:</strong> κ = L/μ</li>
+        <li><strong>Optimal step size:</strong> α = 2/(L + μ)</li>
+      </ul>
+      
+      <h2>Newton's Method: The Second-Order Approach</h2>
+      
+      <h3>The Algorithm</h3>
+      <p>Newton's method uses second-order information (the Hessian matrix) for faster convergence:</p>
+      
+      <p><strong>x_{k+1} = x_k - H_k^{-1} ∇f(x_k)</strong></p>
+      
+      <p>Where <strong>H_k = ∇²f(x_k)</strong> is the Hessian matrix at x_k.</p>
+      
+      <h3>Derivation from Taylor Expansion</h3>
+      <p>Newton's method comes from the second-order Taylor approximation:</p>
+      <p><strong>f(x_k + Δx) ≈ f(x_k) + ∇f(x_k)ᵀΔx + ½ΔxᵀH_kΔx</strong></p>
+      
+      <p>Setting the gradient of this approximation to zero:</p>
+      <p><strong>∇f(x_k) + H_kΔx = 0</strong></p>
+      
+      <p>Solving for Δx gives the Newton step: <strong>Δx = -H_k^{-1}∇f(x_k)</strong></p>
+      
+      <h3>Geometric Interpretation</h3>
+      <p>Newton's method fits a quadratic approximation to the function at each iteration and jumps to the minimum of this approximation.</p>
+      
+      <h3>Convergence Properties</h3>
+      <ul>
+        <li><strong>Quadratic convergence:</strong> Near the solution, Newton's method converges quadratically</li>
+        <li><strong>Affine invariance:</strong> Performance doesn't depend on coordinate system</li>
+        <li><strong>Exact for quadratics:</strong> Converges in one step for quadratic functions</li>
+      </ul>
+      
+      <h2>The Role of Convexity</h2>
+      
+      <h3>What is Convexity?</h3>
+      <p>A function f is <strong>convex</strong> if for all x, y in its domain and λ ∈ [0,1]:</p>
+      <p><strong>f(λx + (1-λ)y) ≤ λf(x) + (1-λ)f(y)</strong></p>
+      
+      <h3>Convex Sets</h3>
+      <p>A set C is convex if the line segment between any two points in C lies entirely within C:</p>
+      <p><strong>x, y ∈ C ⟹ λx + (1-λ)y ∈ C for all λ ∈ [0,1]</strong></p>
+      
+      <h3>Properties of Convex Functions</h3>
+      <ul>
+        <li><strong>Local minima are global:</strong> Any local minimum is a global minimum</li>
+        <li><strong>First-order condition:</strong> x* is optimal iff ∇f(x*) = 0</li>
+        <li><strong>Second-order condition:</strong> f is convex iff Hessian is positive semidefinite</li>
+      </ul>
+      
+      <h3>Strictly Convex Functions</h3>
+      <p>A function is <strong>strictly convex</strong> if the inequality is strict for x ≠ y. This ensures:</p>
+      <ul>
+        <li><strong>Unique global minimum</strong></li>
+        <li><strong>Strong convergence guarantees</strong></li>
+        <li><strong>Better conditioning</strong></li>
+      </ul>
+      
+      <h3>Strongly Convex Functions</h3>
+      <p>A function f is <strong>μ-strongly convex</strong> if:</p>
+      <p><strong>f(y) ≥ f(x) + ∇f(x)ᵀ(y-x) + (μ/2)||y-x||²</strong></p>
+      
+      <p>This provides:</p>
+      <ul>
+        <li><strong>Lower bound on curvature</strong></li>
+        <li><strong>Linear convergence rates for gradient descent</strong></li>
+        <li><strong>Condition number bounds</strong></li>
+      </ul>
+      
+      <div id="convexity-demo"></div>
+      
+      <h2>Comparative Analysis</h2>
+      
+      <h3>Convergence Rates</h3>
+      <div class="comparison-table">
+        <table border="1" style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+          <tr>
+            <th style="padding: 8px; background-color: #f5f5f5;">Method</th>
+            <th style="padding: 8px; background-color: #f5f5f5;">Convergence Rate</th>
+            <th style="padding: 8px; background-color: #f5f5f5;">Information Used</th>
+            <th style="padding: 8px; background-color: #f5f5f5;">Cost per Iteration</th>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Gradient Descent</td>
+            <td style="padding: 8px;">Linear: O(ρᵏ)</td>
+            <td style="padding: 8px;">First-order (gradient)</td>
+            <td style="padding: 8px;">O(n)</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Newton's Method</td>
+            <td style="padding: 8px;">Quadratic: O(ρᵏ²)</td>
+            <td style="padding: 8px;">Second-order (Hessian)</td>
+            <td style="padding: 8px;">O(n³)</td>
+          </tr>
+        </table>
+      </div>
+      
+      <h3>Advantages and Disadvantages</h3>
+      
+      <h4>Gradient Descent</h4>
+      <p><strong>Advantages:</strong></p>
+      <ul>
+        <li>Simple to implement and understand</li>
+        <li>Low computational cost per iteration</li>
+        <li>Scales well to high dimensions</li>
+        <li>Memory efficient</li>
+        <li>Works for non-smooth functions (subgradient methods)</li>
+      </ul>
+      
+      <p><strong>Disadvantages:</strong></p>
+      <ul>
+        <li>Slow convergence, especially for ill-conditioned problems</li>
+        <li>Sensitive to step size selection</li>
+        <li>Can be slow near the optimum</li>
+        <li>Performance depends on problem conditioning</li>
+      </ul>
+      
+      <h4>Newton's Method</h4>
+      <p><strong>Advantages:</strong></p>
+      <ul>
+        <li>Fast quadratic convergence near the solution</li>
+        <li>Affine invariant (doesn't depend on coordinate scaling)</li>
+        <li>Automatic step size (no tuning needed)</li>
+        <li>Excellent for well-conditioned problems</li>
+      </ul>
+      
+      <p><strong>Disadvantages:</strong></p>
+      <ul>
+        <li>Expensive: requires Hessian computation and inversion</li>
+        <li>O(n³) cost per iteration</li>
+        <li>May not converge if started far from solution</li>
+        <li>Requires positive definite Hessian</li>
+        <li>Not suitable for very high-dimensional problems</li>
+      </ul>
+      
+      <div id="gradient-descent-demo"></div>
+      
+      <h2>Practical Considerations</h2>
+      
+      <h3>When to Use Gradient Descent</h3>
+      <ul>
+        <li><strong>High-dimensional problems:</strong> n > 1000</li>
+        <li><strong>Large-scale machine learning:</strong> Deep learning, online learning</li>
+        <li><strong>Non-smooth objectives:</strong> L1 regularization, hinge loss</li>
+        <li><strong>Memory-constrained environments</strong></li>
+        <li><strong>Stochastic settings:</strong> SGD variants</li>
+      </ul>
+      
+      <h3>When to Use Newton's Method</h3>
+      <ul>
+        <li><strong>Low to medium dimensions:</strong> n < 1000</li>
+        <li><strong>High-precision solutions needed</strong></li>
+        <li><strong>Well-conditioned problems</strong></li>
+        <li><strong>Smooth, twice-differentiable objectives</strong></li>
+        <li><strong>Logistic regression, GLMs</strong></li>
+      </ul>
+      
+      <h3>Hybrid Approaches</h3>
+      
+      <h4>Quasi-Newton Methods</h4>
+      <p>Combine advantages of both approaches:</p>
+      <ul>
+        <li><strong>BFGS:</strong> Approximates Hessian using gradient information</li>
+        <li><strong>L-BFGS:</strong> Limited-memory version for large-scale problems</li>
+        <li><strong>DFP:</strong> Davidon-Fletcher-Powell formula</li>
+      </ul>
+      
+      <h4>Trust Region Methods</h4>
+      <p>Combine local quadratic models with global convergence guarantees:</p>
+      <ul>
+        <li>Restrict steps to a "trust region" where the model is reliable</li>
+        <li>Adjust trust region size based on model quality</li>
+        <li>Guarantee global convergence</li>
+      </ul>
+      
+      <h2>Implementation Details</h2>
+      
+      <h3>Gradient Descent Variants</h3>
+      
+      <h4>Momentum</h4>
+      <p>Accelerates convergence by accumulating past gradients:</p>
+      <p><strong>v_{k+1} = βv_k - α∇f(x_k)</strong></p>
+      <p><strong>x_{k+1} = x_k + v_{k+1}</strong></p>
+      
+      <h4>Adaptive Methods</h4>
+      <ul>
+        <li><strong>AdaGrad:</strong> Adapts learning rate based on historical gradients</li>
+        <li><strong>Adam:</strong> Combines momentum with adaptive learning rates</li>
+        <li><strong>RMSprop:</strong> Uses exponential moving average of squared gradients</li>
+      </ul>
+      
+      <h3>Newton's Method Modifications</h3>
+      
+      <h4>Damped Newton</h4>
+      <p>Add line search to ensure global convergence:</p>
+      <p><strong>x_{k+1} = x_k - α_k H_k^{-1} ∇f(x_k)</strong></p>
+      
+      <h4>Regularized Newton</h4>
+      <p>Handle indefinite Hessians:</p>
+      <p><strong>x_{k+1} = x_k - (H_k + λI)^{-1} ∇f(x_k)</strong></p>
+      
+      <h3>Numerical Considerations</h3>
+      
+      <h4>Gradient Computation</h4>
+      <ul>
+        <li><strong>Analytical gradients:</strong> Most accurate, when available</li>
+        <li><strong>Finite differences:</strong> ∇f(x) ≈ (f(x+h) - f(x))/h</li>
+        <li><strong>Automatic differentiation:</strong> Efficient and accurate</li>
+      </ul>
+      
+      <h4>Hessian Computation</h4>
+      <ul>
+        <li><strong>Analytical Hessian:</strong> Exact but expensive to derive</li>
+        <li><strong>Finite differences:</strong> Approximate using gradients</li>
+        <li><strong>Gauss-Newton approximation:</strong> For least squares problems</li>
+      </ul>
+      
+      <h2>Applications in Machine Learning</h2>
+      
+      <h3>Linear Regression</h3>
+      <p>Objective: <strong>f(w) = ½||Xw - y||²</strong></p>
+      <ul>
+        <li><strong>Gradient:</strong> ∇f(w) = Xᵀ(Xw - y)</li>
+        <li><strong>Hessian:</strong> H = XᵀX</li>
+        <li><strong>Newton's method:</strong> w = (XᵀX)^{-1}Xᵀy (closed form!)</li>
+      </ul>
+      
+      <h3>Logistic Regression</h3>
+      <p>Objective: <strong>f(w) = Σᵢ log(1 + exp(-yᵢwᵀxᵢ))</strong></p>
+      <ul>
+        <li><strong>Gradient:</strong> Involves sigmoid functions</li>
+        <li><strong>Hessian:</strong> Always positive semidefinite</li>
+        <li><strong>Newton's method:</strong> Often called IRLS (Iteratively Reweighted Least Squares)</li>
+      </ul>
+      
+      <h3>Neural Networks</h3>
+      <ul>
+        <li><strong>Gradient descent:</strong> Backpropagation for gradient computation</li>
+        <li><strong>Variants:</strong> SGD, Adam, RMSprop for large-scale optimization</li>
+        <li><strong>Second-order methods:</strong> Rarely used due to computational cost</li>
+      </ul>
+      
+      <h2>Advanced Topics</h2>
+      
+      <h3>Stochastic Methods</h3>
+      <p>For large datasets, use stochastic approximations:</p>
+      <ul>
+        <li><strong>SGD:</strong> Use single sample or mini-batch</li>
+        <li><strong>Stochastic Newton:</strong> Approximate Hessian with samples</li>
+        <li><strong>Variance reduction:</strong> SVRG, SAGA methods</li>
+      </ul>
+      
+      <h3>Constrained Optimization</h3>
+      <p>Extend to problems with constraints:</p>
+      <ul>
+        <li><strong>Projected gradient descent:</strong> Project onto feasible set</li>
+        <li><strong>Lagrange multipliers:</strong> Handle equality constraints</li>
+        <li><strong>Interior point methods:</strong> Handle inequality constraints</li>
+      </ul>
+      
+      <h3>Non-Convex Optimization</h3>
+      <p>Special considerations for non-convex functions:</p>
+      <ul>
+        <li><strong>Multiple local minima:</strong> Global optimization challenges</li>
+        <li><strong>Saddle points:</strong> Can slow convergence</li>
+        <li><strong>Escape strategies:</strong> Random restarts, annealing</li>
+      </ul>
+      
+      <h2>Summary and Recommendations</h2>
+      
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><strong>Gradient descent:</strong> Simple, scalable, but potentially slow</li>
+        <li><strong>Newton's method:</strong> Fast convergence, but expensive and limited scalability</li>
+        <li><strong>Convexity matters:</strong> Provides convergence guarantees and global optimality</li>
+        <li><strong>Problem structure:</strong> Choose method based on dimension, conditioning, and resources</li>
+      </ul>
+      
+      <h3>Decision Framework</h3>
+      <ol>
+        <li><strong>Problem size:</strong> High-dimensional → Gradient descent</li>
+        <li><strong>Computational budget:</strong> Limited → Gradient descent</li>
+        <li><strong>Convergence speed:</strong> Critical → Newton's method (if feasible)</li>
+        <li><strong>Problem conditioning:</strong> Well-conditioned → Newton's method</li>
+        <li><strong>Smoothness:</strong> Non-smooth → Subgradient methods</li>
+      </ol>
+      
+      <h3>Modern Developments</h3>
+      <ul>
+        <li><strong>Acceleration:</strong> Nesterov momentum, accelerated gradient methods</li>
+        <li><strong>Adaptive methods:</strong> Adam, AdaGrad family</li>
+        <li><strong>Second-order approximations:</strong> K-FAC, natural gradients</li>
+        <li><strong>Distributed optimization:</strong> Parallel and federated learning</li>
+      </ul>
+      
+      <p>Understanding these fundamental optimization methods provides the foundation for tackling complex machine learning and engineering problems. The choice between gradient descent and Newton's method—or their variants—depends on the specific characteristics of your problem and computational constraints.</p>
+    `,
+    tags: ["optimization", "machine learning", "mathematics", "gradient descent", "newtons method", "convexity", "interactive"],
+    date: "2025-01-23",
+    interactive: true,
+    category: "mathematics",
+    author: "Moksh Shah",
+    readTime: "18 min read",
+    image: "/images/optimization-preview.png",
+    description: "Master the mathematics behind gradient descent and Newton's method with interactive visualizations. Explore convexity, convergence rates, and practical implementation details through comprehensive mathematical exposition.",
+    keywords: "gradient descent, newtons method, optimization, machine learning, convexity, convergence, hessian, interactive visualization, multivariate optimization"
   }
 ];
 
@@ -612,6 +972,13 @@ export default function ArticleClient() {
           <div className="mt-12 space-y-12">
             <SymmetricMatrixDemo />
             <CovarianceMatrixDemo />
+          </div>
+        )}
+        
+        {article.interactive && article.id === "gradient-descent-newtons-method" && (
+          <div className="mt-12 space-y-12">
+            <GradientDescentDemo />
+            <ConvexityDemo />
           </div>
         )}
 
