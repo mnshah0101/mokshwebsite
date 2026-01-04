@@ -3,114 +3,61 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import VectorNormsDemo from "./VectorNormsDemo";
-import SVDDemo from "./SVDDemo";
 import ArticleStructuredData from "./ArticleStructuredData";
 
 // Sample articles data - you can replace this with your actual articles
-const sampleArticles = [
+const sampleArticles: Array<{
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  tags: string[];
+  date: string;
+  interactive: boolean;
+  category: string;
+  author: string;
+  readTime: string;
+  image: string;
+  description: string;
+  keywords: string;
+}> = [
   {
-    id: "vector-norms-visualization",
-    title: "Visualizing Vector Norms: L0, L1, L2, and L∞",
-    excerpt: "An interactive exploration of different vector norms and their geometric interpretations, with real-time visualizations of unit balls.",
+    id: "esl-chapter-2-solutions",
+    title: "ESL Chapter 2: Selected Problem Solutions",
+    excerpt: "My solutions to selected problems from Chapter 2 of The Elements of Statistical Learning. Covers problems 2.1, 2.2, 2.4, 2.5, and 2.7.",
     content: `
-      <h2>Introduction to Vector Norms</h2>
-      <p>A vector norm is a function that assigns a strictly positive length or size to each vector in a vector space. Different norms give different geometric interpretations of "distance" and "size" in vector spaces.</p>
-      
-      <h3>The Four Main Norms</h3>
+      <h2>Chapter 2: Overview of Supervised Learning</h2>
+      <p>These are my solutions to selected problems from Chapter 2 of <em>The Elements of Statistical Learning</em> by Hastie, Tibshirani, and Friedman.</p>
+
+      <h3>Problems Covered</h3>
       <ul>
-        <li><strong>L0 Norm (Hamming Norm)</strong>: Counts the number of non-zero elements in a vector</li>
-        <li><strong>L1 Norm (Manhattan Norm)</strong>: Sum of absolute values of vector components</li>
-        <li><strong>L2 Norm (Euclidean Norm)</strong>: Square root of sum of squared components</li>
-        <li><strong>L∞ Norm (Chebyshev Norm)</strong>: Maximum absolute value among components</li>
+        <li><strong>Problem 2.1</strong></li>
+        <li><strong>Problem 2.2</strong></li>
+        <li><strong>Problem 2.4</strong></li>
+        <li><strong>Problem 2.5</strong></li>
+        <li><strong>Problem 2.7</strong></li>
       </ul>
-      
-      <h3>Mathematical Definitions</h3>
-      <p>For a vector <strong>x = (x₁, x₂, ..., xₙ)</strong>:</p>
-      <ul>
-        <li><strong>L0:</strong> ||x||₀ = number of non-zero elements</li>
-        <li><strong>L1:</strong> ||x||₁ = |x₁| + |x₂| + ... + |xₙ|</li>
-        <li><strong>L2:</strong> ||x||₂ = √(x₁² + x₂² + ... + xₙ²)</li>
-        <li><strong>L∞:</strong> ||x||∞ = max(|x₁|, |x₂|, ..., |xₙ|)</li>
-      </ul>
-      
-      <h3>Geometric Interpretation</h3>
-      <p>The unit ball for each norm is the set of all vectors with norm equal to 1. These shapes reveal the fundamental differences between the norms:</p>
-      <ul>
-        <li><strong>L0:</strong> Discrete points (not a true norm in continuous spaces)</li>
-        <li><strong>L1:</strong> Diamond shape (rhombus)</li>
-        <li><strong>L2:</strong> Circle (sphere in higher dimensions)</li>
-        <li><strong>L∞:</strong> Square (cube in higher dimensions)</li>
-      </ul>
-      
-      <div class="interactive-demo">
-        <h4>Interactive: Vector Norm Visualization</h4>
-        <p>Explore how different vector norms create different unit balls. The rotating vector shows the current norm values in real-time:</p>
-        <div id="vector-norms-demo"></div>
+
+      <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1.5rem 0; border-radius: 0.25rem;">
+        <strong>Note:</strong> These solutions are approximate and not fully detailed. They represent my own work and understanding—use them as a reference, not as definitive answers.
       </div>
-      
-      <h3>Applications</h3>
-      <p>Different norms are used in various applications:</p>
-      <ul>
-        <li><strong>L1:</strong> Sparse signal processing, LASSO regression</li>
-        <li><strong>L2:</strong> Standard distance metric, least squares</li>
-        <li><strong>L∞:</strong> Worst-case analysis, robust optimization</li>
-        <li><strong>L0:</strong> Sparsity constraints, feature selection</li>
-      </ul>
+
+      <h3>Download</h3>
+      <p>
+        <a href="https://drive.google.com/file/d/1ObrUip1H5KlIxo84Li7boD8VbhdlQhMA/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #3b82f6; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold;">
+          View Solutions PDF →
+        </a>
+      </p>
     `,
-    tags: ["mathematics", "linear algebra", "vector norms", "visualization"],
-    date: "2025-07-12",
-    interactive: true,
-    category: "mathematics",
+    tags: ["statistics", "machine learning", "ESL", "textbook solutions"],
+    date: "2026-01-04",
+    interactive: false,
+    category: "notes",
     author: "Moksh Shah",
-    readTime: "5 min read",
-    image: "/images/vector-norms-preview.png",
-    description: "Explore the fascinating world of vector norms through interactive visualizations. Learn about L0, L1, L2, and L∞ norms with real-time demonstrations and geometric interpretations.",
-    keywords: "vector norms, linear algebra, mathematics, interactive visualization, L0 norm, L1 norm, L2 norm, L∞ norm, machine learning, data science"
-  },
-  {
-    id: "hard-margin-svm",
-    title: "Interactive Hard Margin SVM",
-    excerpt: "Explore Support Vector Machines with hard margins through an interactive visualization. Drag points and see how the decision boundary and margins adapt in real-time.",
-    content: `
-      <h2>Understanding Hard Margin SVM</h2>
-      <p>Support Vector Machines (SVM) are powerful supervised learning algorithms used for classification and regression. The hard margin SVM assumes that the data is linearly separable and finds the optimal hyperplane that maximizes the margin between classes.</p>
-      
-      <h3>Key Concepts</h3>
-      <ul>
-        <li><strong>Decision Boundary:</strong> The hyperplane that separates the two classes</li>
-        <li><strong>Margin:</strong> The distance between the decision boundary and the nearest data points</li>
-        <li><strong>Support Vectors:</strong> The data points closest to the decision boundary</li>
-        <li><strong>Hard Margin:</strong> No data points are allowed within the margin</li>
-      </ul>
-      
-      <h3>Mathematical Formulation</h3>
-      <p>For a 2D case, the decision boundary is defined by:</p>
-      <p><strong>w₁x + w₂y + b = 0</strong></p>
-      <p>Where:</p>
-      <ul>
-        <li><strong>w = (w₁, w₂):</strong> Weight vector (normal to the decision boundary)</li>
-        <li><strong>b:</strong> Bias term</li>
-        <li><strong>Margin width:</strong> 2/||w||</li>
-      </ul>
-      
-      <h3>Optimization Problem</h3>
-      <p>The SVM optimization problem is:</p>
-      <p><strong>Minimize:</strong> ½||w||²</p>
-      <p><strong>Subject to:</strong> yᵢ(w·xᵢ + b) ≥ 1 for all training points</p>
-      
-      <h3>Geometric Interpretation</h3>
-      <p>The SVM finds the widest possible "street" between the two classes. The decision boundary runs down the middle of this street, and the margin boundaries define the edges.</p>
-    `,
-    tags: ["machine learning", "svm", "classification", "interactive"],
-    date: "2025-01-15",
-    interactive: true,
-    category: "machine learning",
-    author: "Moksh Shah",
-    readTime: "7 min read",
-    image: "/images/svm-preview.png",
-    description: "Learn about Support Vector Machines through interactive visualization. Understand hard margins, decision boundaries, and support vectors with hands-on exploration.",
-    keywords: "support vector machine, SVM, hard margin, classification, machine learning, decision boundary, margin, support vectors"
+    readTime: "2 min read",
+    image: "/images/moksh_logo.png",
+    description: "Solutions to selected problems from Chapter 2 of The Elements of Statistical Learning by Hastie, Tibshirani, and Friedman.",
+    keywords: "ESL, Elements of Statistical Learning, Chapter 2, solutions, statistics, machine learning, Hastie, Tibshirani, Friedman"
   }
 ];
 
@@ -192,17 +139,6 @@ export default function ArticleClient() {
         </article>
 
         {/* Interactive Content */}
-        {article.interactive && article.id === "vector-norms-visualization" && (
-          <div className="mt-12">
-            <VectorNormsDemo />
-          </div>
-        )}
-        
-        {article.interactive && article.id === "hard-margin-svm" && (
-          <div className="mt-12">
-            <SVDDemo />
-          </div>
-        )}
 
         {/* Navigation Footer */}
         <footer className="mt-12 pt-8 border-t border-gray-200">

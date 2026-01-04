@@ -4,24 +4,23 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 // Sample articles data - you can replace this with your actual articles
-const sampleArticles = [
+const sampleArticles: Array<{
+  id: string;
+  title: string;
+  excerpt: string;
+  tags: string[];
+  date: string;
+  interactive: boolean;
+  category: string;
+}> = [
   {
-    id: "vector-norms-visualization",
-    title: "Visualizing Vector Norms: L0, L1, L2, and L∞",
-    excerpt: "An interactive exploration of different vector norms and their geometric interpretations, with real-time visualizations of unit balls.",
-    tags: ["mathematics", "linear algebra", "vector norms", "visualization"],
-    date: "2025-07-12",
-    interactive: true,
-    category: "mathematics"
-  },
-  {
-    id: "hard-margin-svm",
-    title: "Interactive Hard Margin SVM",
-    excerpt: "Explore Support Vector Machines with hard margins through an interactive visualization. Drag points and see how the decision boundary and margins adapt in real-time.",
-    tags: ["machine learning", "svm", "classification", "interactive"],
-    date: "2025-01-15",
-    interactive: true,
-    category: "machine learning"
+    id: "esl-chapter-2-solutions",
+    title: "ESL Chapter 2: Selected Problem Solutions",
+    excerpt: "My solutions to selected problems from Chapter 2 of The Elements of Statistical Learning. Covers problems 2.1, 2.2, 2.4, 2.5, and 2.7.",
+    tags: ["statistics", "machine learning", "ESL", "textbook solutions"],
+    date: "2026-01-04",
+    interactive: false,
+    category: "notes"
   }
 ];
 

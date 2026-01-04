@@ -2,34 +2,33 @@ import { Metadata } from "next";
 import ArticleClient from "../../../components/ArticleClient";
 
 // Sample articles data for metadata generation
-const sampleArticles = [
+const sampleArticles: Array<{
+  id: string;
+  title: string;
+  excerpt: string;
+  tags: string[];
+  date: string;
+  interactive: boolean;
+  category: string;
+  author: string;
+  readTime: string;
+  image: string;
+  description: string;
+  keywords: string;
+}> = [
   {
-    id: "vector-norms-visualization",
-    title: "Visualizing Vector Norms: L0, L1, L2, and L∞",
-    excerpt: "An interactive exploration of different vector norms and their geometric interpretations, with real-time visualizations of unit balls.",
-    tags: ["mathematics", "linear algebra", "vector norms", "visualization"],
-    date: "2025-07-12",
-    interactive: true,
-    category: "mathematics",
+    id: "esl-chapter-2-solutions",
+    title: "ESL Chapter 2: Selected Problem Solutions",
+    excerpt: "My solutions to selected problems from Chapter 2 of The Elements of Statistical Learning. Covers problems 2.1, 2.2, 2.4, 2.5, and 2.7.",
+    tags: ["statistics", "machine learning", "ESL", "textbook solutions"],
+    date: "2026-01-04",
+    interactive: false,
+    category: "notes",
     author: "Moksh Shah",
-    readTime: "5 min read",
-    image: "/images/vector-norms-preview.png",
-    description: "Explore the fascinating world of vector norms through interactive visualizations. Learn about L0, L1, L2, and L∞ norms with real-time demonstrations and geometric interpretations.",
-    keywords: "vector norms, linear algebra, mathematics, interactive visualization, L0 norm, L1 norm, L2 norm, L∞ norm, machine learning, data science"
-  },
-  {
-    id: "hard-margin-svm",
-    title: "Interactive Hard Margin SVM",
-    excerpt: "Explore Support Vector Machines with hard margins through an interactive visualization. Drag points and see how the decision boundary and margins adapt in real-time.",
-    tags: ["machine learning", "svm", "classification", "interactive"],
-    date: "2025-01-15",
-    interactive: true,
-    category: "machine learning",
-    author: "Moksh Shah",
-    readTime: "7 min read",
-    image: "/images/svm-preview.png",
-    description: "Learn about Support Vector Machines through interactive visualization. Understand hard margins, decision boundaries, and support vectors with hands-on exploration.",
-    keywords: "support vector machine, SVM, hard margin, classification, machine learning, decision boundary, margin, support vectors"
+    readTime: "2 min read",
+    image: "/images/moksh_logo.png",
+    description: "Solutions to selected problems from Chapter 2 of The Elements of Statistical Learning by Hastie, Tibshirani, and Friedman.",
+    keywords: "ESL, Elements of Statistical Learning, Chapter 2, solutions, statistics, machine learning, Hastie, Tibshirani, Friedman"
   }
 ];
 
